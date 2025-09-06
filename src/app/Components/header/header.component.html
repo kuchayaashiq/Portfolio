@@ -1,0 +1,152 @@
+<nav class="fixed top-0 w-full z-50 transition-all duration-700 ease-out"
+  [ngClass]="isScrolled ? 'bg-slate-900/90 backdrop-blur-xl shadow-2xl border-b border-white/10' : 'bg-transparent'"
+  role="navigation" aria-label="Main navigation">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+
+      <!-- Logo with enhanced animation -->
+      <div class="flex-shrink-0 group cursor-pointer" data-aos="fade-right" data-aos-duration="1200"
+        (click)="scrollToSection('home')" tabindex="0" role="button" aria-label="Navigate to home">
+        <div class="flex items-center gap-3 relative transform transition-all duration-300 group-hover:scale-105">
+          <div
+            class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-purple-400/30 group-hover:ring-purple-400/50 transition-all duration-300">
+            <img src="assets/Images/logo.jpg" alt="Portfolio Logo"
+              class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+          </div>
+          <h1
+            class="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent relative">
+            Portfolio
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-500 group-hover:w-full"></span>
+            <span
+              class="absolute -inset-2 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 blur-sm"></span>
+          </h1>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation with enhanced effects -->
+      <div class="hidden md:block" data-aos="fade-left" data-aos-duration="1200">
+        <div class="ml-10 flex items-baseline gap-1">
+          <ng-container *ngFor="let item of navItems; trackBy: trackByFn">
+            <button (click)="scrollToSection(item.id)"
+              class="relative px-4 py-3 mx-1 text-gray-300 cursor-pointer transition-all duration-300 hover:text-white group rounded-xl font-medium"
+              [ngClass]="{'text-purple-400 bg-purple-500/10': activeSection === item.id}"
+              [attr.aria-current]="activeSection === item.id ? 'page' : null" type="button">
+
+              <span class="relative z-10 flex items-center space-x-2">
+                <i class="fa-solid {{item.icon}} text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                  [ngClass]="{'opacity-100': activeSection === item.id}"></i>
+                <span>{{ item.label }}</span>
+              </span>
+
+              <!-- Hover background effect -->
+              <span
+                class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl transform scale-0 transition-transform duration-300 group-hover:scale-100 opacity-0 group-hover:opacity-100"></span>
+
+              <!-- Active/hover underline -->
+              <span
+                class="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 transform -translate-x-1/2 transition-all duration-300 group-hover:w-3/4"
+                [ngClass]="{'w-3/4': activeSection === item.id}"></span>
+
+              <!-- Subtle glow effect -->
+              <span
+                class="absolute inset-0 bg-white/5 rounded-xl transform scale-0 transition-transform duration-500 group-hover:scale-110 blur-md"></span>
+            </button>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Enhanced Mobile menu button -->
+      <div class="md:hidden">
+        <button (click)="toggleMobileMenu()"
+          class="relative w-12 h-12 text-gray-300 hover:text-purple-400 focus:outline-none focus:text-purple-400 transition-all duration-300 rounded-xl hover:bg-purple-500/10 focus:bg-purple-500/10 group"
+          type="button" [attr.aria-expanded]="isMobileMenuOpen" aria-label="Toggle mobile menu"
+          aria-controls="mobile-menu">
+
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <!-- Enhanced hamburger animation -->
+            <span class="block w-6 h-0.5 bg-current transition-all duration-300 ease-out transform origin-center"
+              [ngClass]="{
+                'rotate-45 translate-y-0': isMobileMenuOpen, 
+                '-translate-y-2': !isMobileMenuOpen
+              }"></span>
+            <span class="block w-6 h-0.5 bg-current transition-all duration-300 ease-out my-1.5 transform origin-center"
+              [ngClass]="{
+                'opacity-0 scale-0': isMobileMenuOpen,
+                'opacity-100 scale-100': !isMobileMenuOpen
+              }"></span>
+            <span class="block w-6 h-0.5 bg-current transition-all duration-300 ease-out transform origin-center"
+              [ngClass]="{
+                '-rotate-45 translate-y-0': isMobileMenuOpen, 
+                'translate-y-2': !isMobileMenuOpen
+              }"></span>
+          </div>
+
+          <!-- Button hover effect -->
+          <span
+            class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl transform scale-0 transition-transform duration-300 group-hover:scale-100 opacity-0 group-hover:opacity-100"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Enhanced Mobile Navigation -->
+    <div id="mobile-menu"
+      class="md:hidden absolute inset-x-0 top-full mt-2 px-4 transition-all duration-500 ease-out transform origin-top"
+      [ngClass]="{
+           'opacity-100 scale-100 translate-y-0': isMobileMenuOpen, 
+           'opacity-0 scale-95 -translate-y-4 pointer-events-none': !isMobileMenuOpen
+         }" [attr.aria-hidden]="!isMobileMenuOpen">
+
+      <div
+        class="bg-slate-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-700/30 p-6 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5"></div>
+        <div
+          class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent">
+        </div>
+
+        <div class="space-y-2 relative z-10">
+          <ng-container *ngFor="let item of navItems; let i = index; trackBy: trackByFn">
+            <button (click)="scrollToSection(item.id)"
+              class="w-full text-left px-4 py-3 text-gray-300 hover:text-white cursor-pointer transition-all duration-300 rounded-xl relative overflow-hidden group font-medium transform hover:scale-[1.02]"
+              [ngClass]="{
+                'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 shadow-lg': activeSection === item.id,
+                'hover:bg-slate-700/50': activeSection !== item.id
+              }" [style.animation-delay]="isMobileMenuOpen ? (i * 50) + 'ms' : '0ms'"
+              [ngClass]="isMobileMenuOpen ? 'animate-fade-in-up' : ''" type="button"
+              [attr.aria-current]="activeSection === item.id ? 'page' : null">
+
+              <span class="relative z-20 flex items-center justify-between">
+                <span class="flex items-center gap-3">
+                  <i class="fa-solid {{item.icon}} text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                    [ngClass]="{'opacity-100 text-purple-400': activeSection === item.id}"></i>
+                  <span>{{ item.label }}</span>
+                </span>
+                <i *ngIf="activeSection === item.id" class="fa-solid fa-check text-sm text-purple-400"></i>
+              </span>
+
+              <!-- Hover effect -->
+              <span
+                class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 transform translate-x-full transition-transform duration-300 group-hover:translate-x-0 rounded-xl"></span>
+
+              <!-- Active state glow -->
+              <span *ngIf="activeSection === item.id"
+                class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 animate-pulse rounded-xl"></span>
+            </button>
+          </ng-container>
+        </div>
+
+        <!-- Mobile menu footer decoration -->
+        <div
+          class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-pink-400/30 to-transparent">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress indicator -->
+  <div class="absolute bottom-0 left-0 h-px bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300"
+    [style.width.%]="scrollProgress">
+  </div>
+</nav>

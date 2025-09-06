@@ -1,0 +1,79 @@
+<section id="experience" class="py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Work <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Experience</span>
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
+      <p class="text-gray-300 mt-6 max-w-2xl mx-auto">
+        My professional journey in software development and educational technology
+      </p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="relative">
+      <!-- Timeline Line -->
+      <div
+        class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-purple-500 rounded-full">
+      </div>
+
+      <!-- Experience Items -->
+      <div class="space-y-12">
+        <div *ngFor="let experience of experiences; let i = index"
+          [ngClass]="i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'"
+          class="relative flex flex-col md:flex items-center" data-aos="fade-up" [attr.data-aos-delay]="i * 200">
+          <!-- Timeline Dot -->
+          <div
+            class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-slate-900 z-10">
+            <div *ngIf="experience.current"
+              class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-ping"></div>
+          </div>
+          <app-experience-card [experience]="experience" [index]="i"></app-experience-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Summary -->
+    <div class="mt-20" data-aos="fade-up" data-aos-delay="600">
+      <div class="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50">
+        <h3 class="text-2xl font-bold text-white mb-6 text-center">
+          Professional <span
+            class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Summary</span>
+        </h3>
+
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="space-y-2">
+            <div class="text-3xl font-bold text-purple-400">6+</div>
+            <div class="text-gray-300">Years of Experience</div>
+            <div class="text-sm text-gray-400">In Software Development</div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="text-3xl font-bold text-purple-400">4</div>
+            <div class="text-gray-300">Companies</div>
+            <div class="text-sm text-gray-400">Across Different Industries</div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="text-3xl font-bold text-purple-400">50+</div>
+            <div class="text-gray-300">Projects Delivered</div>
+            <div class="text-sm text-gray-400">Successfully Completed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Download Resume Button -->
+    <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="800">
+      <a href="#" download
+        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+          </path>
+        </svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
