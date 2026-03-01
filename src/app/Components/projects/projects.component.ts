@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 interface Project {
   title: string;
@@ -30,7 +31,7 @@ export class ProjectsComponent {
         'PostgreSQL',
         'TypeScript',
       ],
-      image: 'assets/projects/self-learning.jpg',
+      image: 'assets/Images/sl.png',
       demoUrl: '#',
       githubUrl: 'https://github.com/kuchayaashiq',
       featured: true,
@@ -90,10 +91,10 @@ export class ProjectsComponent {
   ];
 
   get featuredProjects() {
-    return this.projects.filter((project) => project.featured);
+    return this.projects.filter((p) => p.featured);
   }
 
   get otherProjects() {
-    return this.projects.filter((project) => !project.featured);
+    return this.projects.filter((p) => !p.featured);
   }
 }

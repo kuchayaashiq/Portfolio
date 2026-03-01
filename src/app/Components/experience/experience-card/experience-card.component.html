@@ -5,10 +5,10 @@
       hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] group-hover:translate-y-[-2px]">
 
       <!-- Gradient background effect -->
-      <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 rounded-xl"></div>
+      <div class="absolute inset-0 bg-linear-to-br from-purple-500/5 via-transparent to-pink-500/5 rounded-xl"></div>
 
       <!-- Top border gradient -->
-      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent">
+      <div class="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-purple-500/50 to-transparent">
       </div>
 
       <!-- Content container -->
@@ -18,7 +18,7 @@
           <div class="flex-1 min-w-0">
             <!-- Position Title with gradient effect -->
             <h3
-              class="text-xl font-bold bg-gradient-to-r from-white via-white to-gray-200 bg-clip-text text-transparent 
+              class="text-xl font-bold bg-linear-to-r from-white via-white to-gray-200 bg-clip-text text-transparent 
               group-hover:from-purple-400 group-hover:via-pink-400 group-hover:to-purple-400 transition-all duration-300">
               {{ experience.position }}
             </h3>
@@ -109,7 +109,7 @@
         <!-- Current Position Indicator -->
         <div *ngIf="experience.current" class="mt-4 flex items-center justify-center">
           <div
-            class="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-4 py-2">
+            class="bg-linear-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-4 py-2">
             <span class="text-green-300 text-sm font-medium flex items-center">
               <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
               Current Position
