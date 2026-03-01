@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 })
 export class HeroComponent {
   roles: string[] = [
-    'Software Developer',
-    'Angular Expert',
-    'Educational Technology Specialist',
     'Full Stack Developer',
+    '.NET Core & Angular Expert',
+    'Software Engineer',
+    'Multilingual App Builder',
   ];
   currentRoleIndex = 0;
   currentRole = '';

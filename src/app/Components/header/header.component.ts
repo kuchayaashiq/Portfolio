@@ -14,6 +14,7 @@ export class HeaderComponent {
   navItems = [
     { id: 'home', label: 'Home', icon: 'fa-house' },
     { id: 'about', label: 'About', icon: 'fa-user' },
+    { id: 'education', label: 'Education', icon: 'fa-graduation-cap' },
     { id: 'skills', label: 'Skills', icon: 'fa-code' },
     { id: 'experience', label: 'Experience', icon: 'fa-briefcase' },
     { id: 'projects', label: 'Projects', icon: 'fa-laptop-code' },

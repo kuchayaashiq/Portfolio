@@ -13,6 +13,7 @@ import { ExperienceComponent } from './Components/experience/experience.componen
 import { ExperienceCardComponent } from './Components/experience/experience-card/experience-card.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EducationComponent } from './Components/education/education.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ContactComponent,
     ExperienceComponent,
     ExperienceCardComponent,
+    EducationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
   providers: [],

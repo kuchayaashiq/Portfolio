@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import emailjs from '@emailjs/browser';
 
 interface ContactForm {
   name: string;
@@ -13,7 +15,7 @@ interface ContactForm {
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   form: ContactForm = {
     name: '',
     email: '',
@@ -22,18 +24,42 @@ export class ContactComponent {
   };
 
   isSubmitting = false;
+  submitStatus: 'idle' | 'success' | 'error' = 'idle';
 
-  onSubmit() {
-    if (this.isFormValid()) {
-      this.isSubmitting = true;
+  ngOnInit() {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init(environment.emailjs.publicKey);
+    }
+  }
 
-      // Simulate form submission
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.resetForm();
-        // Show success message
-        alert('Message sent successfully!');
-      }, 2000);
+  async onSubmit() {
+    if (!this.isFormValid()) return;
+
+    this.isSubmitting = true;
+    this.submitStatus = 'idle';
+
+    const templateParams = {
+      from_name: this.form.name,
+      from_email: this.form.email,
+      subject: this.form.subject,
+      message: this.form.message,
+      to_email: 'kucchayaashiq@gmail.com',
+    };
+
+    try {
+      await emailjs.send(
+        environment.emailjs.serviceId,
+        environment.emailjs.templateId,
+        templateParams,
+      );
+      this.submitStatus = 'success';
+      this.resetForm();
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      this.submitStatus = 'error';
+    } finally {
+      this.isSubmitting = false;
+      setTimeout(() => (this.submitStatus = 'idle'), 5000);
     }
   }
 
@@ -47,11 +73,6 @@ export class ContactComponent {
   }
 
   private resetForm() {
-    this.form = {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    };
+    this.form = { name: '', email: '', subject: '', message: '' };
   }
 }
